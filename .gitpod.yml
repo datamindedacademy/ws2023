@@ -1,0 +1,6 @@
+image:
+  file: .gitpod.Dockerfile
+checkoutLocation: '.'
+vscode:
+  extensions:
+    - innoverio.vscode-dbt-power-user
