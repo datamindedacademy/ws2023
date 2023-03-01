@@ -1,0 +1,50 @@
+
+version: 2
+
+sources:
+  - name: covid
+    description: 'Covid statistics in Belgium'
+    database: "{{ target.database }}"
+    schema: PUBLIC
+    tables:
+      - name: vacc_muni_cum
+        description: 'Vaccines administered per week and per municipality'
+
+      - name: cases_muni
+        description: 'New case per day and per municipality'
+
+      - name: population
+        description: 'Population per municipality year 2021'
+
+
+
+
+models:
+  - name: cases_trans
+    description: "Transformation of cases_muni source"
+    columns:
+      - name: NIS5
+        description: "Unique code of municipality"
+        tests:
+          - unique
+          - not_null
+
+  - name: vaccinations_trans
+    description: "Transformation of vacc_muni_cum source"
+    columns:
+      - name: NIS5
+        description: "Unique code of municipality"
+        tests:
+          - unique
+          - relationships:
+                to: source('covid','population')
+                field: REFNIS
+
+  - name: final_covid
+    description: "final results"
+    columns:
+      - name: Region
+        description: "Region of the municipality"
+        tests:
+          - accepted_values:
+              values: ["Brussels", 'Flanders', "Wallonia"]

@@ -4,9 +4,9 @@ with joined as (
         vaccination.fully_vaccinated,
         vaccination.by_date
     from
-        cases_trans as cases
+        {{ ref('cases_trans') }} as cases
     left join
-        vaccinations_trans as vaccination
+        {{ ref('vaccinations_trans')}} as vaccination
     on
         cases.nis5 = vaccination.nis5
 ),
@@ -17,7 +17,7 @@ population_stat as (
     from
         joined
     left join
-        public.population
+        {{ source('covid','population')}}
     on
         population.refnis = joined.nis5
 ),

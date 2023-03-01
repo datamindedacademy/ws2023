@@ -1,8 +1,26 @@
 
 version: 2
 
+sources:
+  - name: covid
+    description: 'Covid statistics in Belgium'
+    database: "{{ target.database }}"
+    schema: PUBLIC
+    tables:
+      - name: vacc_muni_cum
+        description: 'Vaccines administered per week and per municipality'
+
+      - name: cases_muni
+        description: 'New case per day and per municipality'
+
+      - name: population
+        description: 'Population per municipality year 2021'
+
+
+
+
 models:
-  - name: my_first_dbt_model
+  - name: example
     description: "A starter dbt model"
     columns:
       - name: id
@@ -11,11 +29,3 @@ models:
           - unique
           - not_null
 
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null
