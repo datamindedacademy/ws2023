@@ -2,7 +2,7 @@
 ## Exercises Repository
 
 [![Open in
-Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datamindedacademy/academy_dbt.git)
+Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/datamindedacademy/ws_2023.git)
 
 This repository is hosting the exercises provided to students in the context of the `Relational DataBases` course of the Data Minded Academy.
 This specific exercise is focused on dbt.
